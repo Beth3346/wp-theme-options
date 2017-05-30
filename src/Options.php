@@ -28,6 +28,8 @@ class Options
     private function addOptionToDatabase($subpage_id, array $fields)
     {
         if (false == get_option($subpage_id)) {
+            $form = new Forms;
+
             add_option($subpage_id, apply_filters([$form, 'defaultOptions'], $form->applyDefaultOptions($fields)));
         }
     }

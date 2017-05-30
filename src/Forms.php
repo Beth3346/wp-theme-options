@@ -16,7 +16,9 @@ class Forms
         $defaults = [];
 
         foreach ($fields as $field) {
-            $defaults[] = $field['default_value'];
+            if (isset($field['default_value'])) {
+                $defaults[] = $field['default_value'];
+            }
         }
 
         // print_r($defaults);
