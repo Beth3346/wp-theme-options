@@ -27,6 +27,8 @@ class Options
 
     private function addOptionToDatabase($subpage_id, array $fields)
     {
+        $form = null;
+
         if (false == get_option($subpage_id)) {
             $form = new Forms;
 
