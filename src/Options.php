@@ -29,10 +29,12 @@ class Options
     {
         $form = null;
 
-        if (false == get_option($subpage_id)) {
+        if (get_option($subpage_id) == false) {
             $form = new Forms;
+            // $default = apply_filters([$form, 'defaultOptions'], $form->applyDefaultOptions($fields));
+            // var_dump($default);
 
-            add_option($subpage_id, apply_filters([$form, 'defaultOptions'], $form->applyDefaultOptions($fields)));
+            add_option($subpage_id);
         }
     }
 
@@ -59,7 +61,7 @@ class Options
 
     private function getLabel($field)
     {
-        return isset($field['label']) ? $field['label'] . ':' :  $this->deslugify($field['id']) . ':';
+        return isset($field['label']) ? $field['label'] . ':' : $this->deslugify($field['id']) . ':';
     }
 
     private function addFields(array $fields, $subpage_id, $section)
