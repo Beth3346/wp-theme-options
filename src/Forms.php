@@ -124,7 +124,7 @@ class Forms
 
         // $html = '<input type="' . $type . '" class="widefat" id="' . $id . '" placeholder="' . $placeholder;
         // $html .= '" name="' . $subpage_id . '[' . $id . ']' . '" value="' . $value . '" />';
-        $html = '<input type="checkbox" id="' . $id . '" name="' . $subpage_id . '[' . $id . ']' . '"' . $checked . '">';
+        $html = '<input type="checkbox" id="' . $id . '" name="' . $subpage_id . '[' . $id . ']' . '"' . $checked . '>';
 
         return $html;
     }
