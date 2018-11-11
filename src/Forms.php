@@ -44,6 +44,8 @@ class Forms
             echo $this->createTextArea($field, $subpage_id, $value);
         } elseif ($type == 'select') {
             echo $this->createSelectField($field, $subpage_id, $value);
+        } elseif ($type == 'checkbox') {
+            echo $this->createCheckField($field, $subpage_id, $value);
         } else {
             echo $this->createTextInput($field, $subpage_id, $value);
         }
@@ -58,7 +60,7 @@ class Forms
 
     private function setFieldLabel(array $field)
     {
-        return isset($field['label']) ? $field['label'] :  $this->deslugify($field['id']);
+        return isset($field['label']) ? $field['label'] : $this->deslugify($field['id']);
     }
 
     private function createTextInput(array $field, $subpage_id, $value)
@@ -111,6 +113,18 @@ class Forms
         $html .= '<option value="">Select ' . $label . '</option>';
         $html .= $this->getSelectOptions($field['options'], $value);
         $html .= '</select>';
+
+        return $html;
+    }
+
+    private function createCheckField(array $field, $subpage_id, $value)
+    {
+        $id = $field['id'];
+        $checked = $value ? 'checked' : '';
+
+        // $html = '<input type="' . $type . '" class="widefat" id="' . $id . '" placeholder="' . $placeholder;
+        // $html .= '" name="' . $subpage_id . '[' . $id . ']' . '" value="' . $value . '" />';
+        $html = '<input type="checkbox" id="' . $id . '" name="' . $subpage_id . '[' . $id . ']' . '"' . $checked . '">';
 
         return $html;
     }
