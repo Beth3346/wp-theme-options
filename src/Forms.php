@@ -45,7 +45,7 @@ class Forms
         } elseif ($type == 'select') {
             echo $this->createSelectField($field, $subpage_id, $value);
         } elseif ($type == 'checkbox') {
-            echo $this->createCheckField($field, $subpage_id, $value);
+            echo $this->createCheckboxInput($field, $subpage_id, $value);
         } else {
             echo $this->createTextInput($field, $subpage_id, $value);
         }
@@ -117,14 +117,14 @@ class Forms
         return $html;
     }
 
-    private function createCheckField(array $field, $subpage_id, $value)
+    private function createCheckboxInput(array $field, $subpage_id, $value)
     {
         $id = $field['id'];
-        $checked = $value ? 'checked' : '';
+        $label = $this->setFieldLabel($field);
+        $checked = ($value) ? 'checked' : '';
 
-        // $html = '<input type="' . $type . '" class="widefat" id="' . $id . '" placeholder="' . $placeholder;
-        // $html .= '" name="' . $subpage_id . '[' . $id . ']' . '" value="' . $value . '" />';
-        $html = '<input type="checkbox" id="' . $id . '" name="' . $subpage_id . '[' . $id . ']' . '"' . $checked . '>';
+        $html = '<p>' . $value . '</p>';
+        $html .= '<input ' . $checked . ' type="checkbox" value="1" id="' . $id . '" name="' . $subpage_id . '[' . $id . ']" />';
 
         return $html;
     }
